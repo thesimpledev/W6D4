@@ -104,7 +104,7 @@ eval("function DOMNodeCollection(htmlElements) {\n  this.he = htmlElements;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nfunction $l(arg) {\n  if (arg instanceof HTMLElement === true) {\n    return new DOMNodeCollection([arg]); \n  } else {\n    return new DOMNodeCollection(document.querySelectorAll(arg));\n  }\n}\n\nwindow.$l = $l ;\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nfunction $l(arg) {\n  if (arg instanceof HTMLElement === true) {\n    return new DOMNodeCollection([arg]);\n  } else if (arg instanceof Function === true) {\n    document.addEventListener(\"DOMContentLoaded\", arg);\n  } else {\n    return new DOMNodeCollection(document.querySelectorAll(arg));\n  }\n}\n\nwindow.$l = $l ;\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
