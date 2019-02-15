@@ -91,5 +91,17 @@ DOMNodeCollection.prototype.remove = function() {
   }
 }
 
+DOMNodeCollection.prototype.on = function(event, callback) {
+  for (let i = 0; i < this.he.length; i++) {
+    this.he[i].callback = callback;
+    this.he[i].addEventListener(event, callback);
+  }
+}
+
+DOMNodeCollection.prototype.off = function (event) {
+  for (let i = 0; i < this.he.length; i++) {
+    this.he[i].removeEventListener(event, this.he[i].callback);
+  }
+}
 
 module.exports = DOMNodeCollection;
